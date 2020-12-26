@@ -74,9 +74,9 @@ func (p *Population) VariationalGrownUp() {
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	for i := 0; i < int(float64(p.Capacity)*p.VariationRate); i++ {
 		A := (r.Int() % len(*p.Chromosomes)) + 1
-		B := 0
+		B := (r.Int() % len(*p.Chromosomes)) + 1
 		C := (r.Int() % len(*p.Chromosomes)) + 1
-		for A != B {
+		for A == B {
 			B = (r.Int() % len(*p.Chromosomes)) + 1
 		}
 		p.Crossing(A, B)
